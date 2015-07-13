@@ -1,0 +1,167 @@
+[
+  {
+    "column": "member_id",
+    "desc": "系統代碼",
+    "type": "label",
+    "data": []
+  },
+  {
+    "column": "circle_id",
+    "desc": "活動圈代碼",
+    "type": "label",
+    "data": []
+  },
+  {
+    "column": "member_name",
+    "desc": "姓名",
+    "type": "input",
+    "data": []
+  },
+  {
+    "column": "member_sex",
+    "desc": "性別",
+    "type": "select",
+    "data": [
+      {
+        "value": "0",
+        "desc": "F"
+      },
+      {
+        "value": "1",
+        "desc": "M"
+      }
+    ]
+  },
+  {
+    "column": "member_address",
+    "desc": "地址",
+    "type": "input",
+    "data": []
+  },
+  {
+    "column": "member_email",
+    "desc": "電子信箱",
+    "type": "email",
+    "data": []
+  },
+  {
+    "column": "member_phone",
+    "desc": "電話",
+    "type": "input",
+    "data": []
+  },
+  {
+    "column": "D1",
+    "desc": "家族名稱",
+    "type": "input",
+    "data": []
+  },
+  {
+    "column": "D2",
+    "desc": "入會日期",
+    "type": "date",
+    "data": []
+  },
+  {
+    "column": "D3",
+    "desc": "電話2",
+    "type": "input",
+    "data": []
+  },
+  {
+    "column": "D7",
+    "desc": "電話3",
+    "type": "input",
+    "data": []
+  },
+  {
+    "column": "D8",
+    "desc": "等級",
+    "type": "input",
+    "data": []
+  },
+  {
+    "column": "D9",
+    "desc": "他牌客廳",
+    "type": "input",
+    "data": []
+  },
+  {
+    "column": "D10",
+    "desc": "他牌帳篷",
+    "type": "input",
+    "data": []
+  },
+  {
+    "column": "D11",
+    "desc": "他牌車架/箱",
+    "type": "input",
+    "data": []
+  },
+  {
+    "column": "D12",
+    "desc": "備註",
+    "type": "input",
+    "data": []
+  },
+  {
+    "column": "D17",
+    "desc": "編號",
+    "type": "input",
+    "data": []
+  },
+  {
+    "column": "D19",
+    "desc": "門市別",
+    "type": "select",
+    "data": [
+      {
+        "value": "竹北店",
+        "desc": "竹北店"
+      },
+      {
+        "value": "桃園店",
+        "desc": "桃園店"
+      },
+      {
+        "value": "新莊店",
+        "desc": "新莊店"
+      },
+      {
+        "value": "頭份店",
+        "desc": "頭份店"
+      }
+    ]
+  },
+  {
+    "column": "D20",
+    "desc": "已購買商品",
+    "type": "input",
+    "data": []
+  },
+  {
+    "column": "D21",
+    "desc": "介紹人",
+    "type": "input",
+    "data": []
+  },
+  {
+    "column": "D22",
+    "desc": "與介紹人關係",
+    "type": "select",
+    "data": [
+      {
+        "value": "朋友",
+        "desc": "朋友"
+      },
+      {
+        "value": "家人",
+        "desc": "家人"
+      },
+      {
+        "value": "同事",
+        "desc": "同事"
+      }
+    ]
+  }
+]

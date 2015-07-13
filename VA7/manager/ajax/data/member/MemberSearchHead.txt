@@ -1,0 +1,74 @@
+﻿[
+  {
+    "name": "member_id",
+    "label": "系統代碼"
+  },
+  {
+    "name": "circle_id",
+    "label": "活動圈代碼"
+  },
+  {
+    "name": "member_name",
+    "label": "姓名"
+  },
+  {
+    "name": "member_sex",
+    "label": "性別"
+  },
+  {
+    "name": "member_address",
+    "label": "地址"
+  },
+  {
+    "name": "member_email",
+    "label": "電子信箱"
+  },
+  {
+    "name": "member_phone",
+    "label": "電話"
+  },
+  {
+    "name": "1",
+    "label": "家族名稱"
+  },
+  {
+    "name": "2",
+    "label": "入會日期"
+  },
+  {
+    "name": "3",
+    "label": "電話2"
+  },
+  {
+    "name": "7",
+    "label": "電話3"
+  },
+  {
+    "name": "8",
+    "label": "等級"
+  },
+  {
+    "name": "9",
+    "label": "他牌客廳"
+  },
+  {
+    "name": "10",
+    "label": "他牌帳篷"
+  },
+  {
+    "name": "11",
+    "label": "他牌車架"
+  },
+  {
+    "name": "12",
+    "label": "備註"
+  },
+  {
+    "name": "17",
+    "label": "會員代碼"
+  },
+  {
+    "name": "18",
+    "label": "店家代號"
+  }
+]

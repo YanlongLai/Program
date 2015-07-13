@@ -1,0 +1,11 @@
+# if pattern 'google' found,char "a"->"A" else "b"->"B"
+/google/ b capitalA
+{
+s/b/B/g
+b end
+}
+:capitalA
+{ 
+s/a/A/g
+}
+:end

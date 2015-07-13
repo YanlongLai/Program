@@ -1,0 +1,6 @@
+s/g..g../GOOGLE/g
+    t capitalA
+    b end
+:capitalA
+    s/a/A/g
+:end

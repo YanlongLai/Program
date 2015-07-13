@@ -1,0 +1,119 @@
+﻿[
+  {
+    "column": "member_id",
+    "desc": "系統代碼",
+    "type": "label",
+    "data": []
+  },
+  {
+    "column": "circle_id",
+    "desc": "活動圈代碼",
+    "type": "label",
+    "data": []
+  },
+  {
+    "column": "member_name",
+    "desc": "姓名",
+    "type": "input",
+    "data": []
+  },
+  {
+    "column": "member_sex",
+    "desc": "性別",
+    "type": "select",
+    "data": [
+      {
+        "value": "0",
+        "desc": "F"
+      },
+      {
+        "value": "1",
+        "desc": "M"
+      }
+    ]
+  },
+  {
+    "column": "member_address",
+    "desc": "地址",
+    "type": "input",
+    "data": []
+  },
+  {
+    "column": "member_email",
+    "desc": "電子信箱",
+    "type": "email",
+    "data": []
+  },
+  {
+    "column": "member_phone",
+    "desc": "電話",
+    "type": "input",
+    "data": []
+  },
+  {
+    "column": "1",
+    "desc": "家族名稱",
+    "type": "input",
+    "data": []
+  },
+  {
+    "column": "2",
+    "desc": "入會日期",
+    "type": "date",
+    "data": []
+  },
+  {
+    "column": "3",
+    "desc": "電話2",
+    "type": "input",
+    "data": []
+  },
+  {
+    "column": "7",
+    "desc": "電話3",
+    "type": "input",
+    "data": []
+  },
+  {
+    "column": "8",
+    "desc": "等級",
+    "type": "input",
+    "data": []
+  },
+  {
+    "column": "9",
+    "desc": "他牌客廳",
+    "type": "input",
+    "data": []
+  },
+  {
+    "column": "10",
+    "desc": "他牌帳篷",
+    "type": "input",
+    "data": []
+  },
+  {
+    "column": "11",
+    "desc": "他牌車架",
+    "type": "input",
+    "data": []
+  },
+  {
+    "column": "12",
+    "desc": "備註",
+    "type": "input",
+    "data": []
+  },
+  {
+    "column": "17",
+    "desc": "會員代碼",
+    "type": "input",
+    "data": []
+  },
+  {
+    "column": "18",
+    "desc": "店家代號",
+    "type": "input",
+    "data": []
+  }
+]

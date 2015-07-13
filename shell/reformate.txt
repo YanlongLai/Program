@@ -1,0 +1,10 @@
+File  size = 0 KB
+File TargetFile size = 0.0175781 KB
+File cp.txt size = 0 KB
+File reformate.txt size = 0 KB
+File sed_scr size = 0.0322266 KB
+File sed_scr6 size = 0.119141 KB
+File sed_scr7 size = 0.0683594 KB
+File sed_scr8 size = 0.0439453 KB
+File test size = 0.0507812 KB
+File test2 size = 0.09375 KB
