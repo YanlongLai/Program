@@ -17,10 +17,13 @@ int main() {
 } 
 
 int gcd(int m, int n) { 
-    //最大公因數
-    if(n == 0)
-        return m;
-    //還有餘數，則繼續呼叫原程式
-    else 
-        return gcd(n, m % n); 
+        int r = 0; 
+
+        while(n != 0) { 
+            r = m % n; 
+            m = n; 
+            n = r; 
+        } 
+
+                return m; 
 }

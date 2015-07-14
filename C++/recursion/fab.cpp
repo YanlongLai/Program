@@ -13,7 +13,7 @@ int main()
     double constant_c = sqrt(5) / 5;
     double value_1 = 0;
     int value_2 = 0;
-
+    cout << "輸入您想要輸出的fab個數：";
     scanf("%d",&n);
     if(n > 0)
     {
