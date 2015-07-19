@@ -68,6 +68,51 @@ About basic coding sheets
  5、將執行創建此函數對象的執行環境的作用域鏈傳入，作為此函數對象的Scope屬性。  
 
  6、返回此函數對象的指針。  
+ ### 函式兩種呼叫方式
+ 傳統的面向對象語言中，function只有一種調用方式，就是作為函數調用（Invoked as a function），這是因為面向對象語言中有類（Class）的概念和語言元素。用過JavaScript的都知道，JavaScript中是沒有class關鍵字的（ECMA-262第五版中增加了class，但本系列文章討論的是第三版標準），為了能模擬「類」，ECMAScript引入了「作為構造器調用（Invoked as a
+ constructor）」的函數調用方式，同時仍保留了「作為函數調用」的方式。這樣ECMAScript中就有兩種函數調用方式，而通過兩種方式調用同一個函數，目的和效果都存在本質的區別。看下面一段代碼：  
+ ```javascript
+ function MyFunction(){
+         return 0;
+ }
+  
+  var invokedAsFunction = MyFunction();
+  var invokedAsConstructor = new MyFunction();
+   
+   alert(typeof invokedAsFunction); //number
+   alert(invokedAsFunction); //0
+   alert(typeof invokedAsConstructor); //object
+ ```
+ 這段代碼顯示了同一個函數當做函數和構造器兩種不同方式調用的區別。  
+
+ 當直接使用函數名調用函數時，是將函數作為函數調用，它的效果和常規意義上的函數一樣，執行一段代碼並返回結果。  
+
+ 當在函數名前加上「new」關鍵字調用時，是作為構造器調用，它的效果類似面向對象語言中類的構造函數，返回一個對象。  
+
+ 作為函數調用沒有太多好說的，下面著重介紹作為構造器調用函數，因為這和JavaScript中的面向對象編程有很大聯繫。  
+ ### ECMAScript中的構造器（Constructor）
+ ```javascript
+ function University(name, loca){
+         this._name = name;
+             this._loca = loca;
+                 this.showInfo = function(){
+                             alert(this._name + '是一所' + this._loca + '的大學');
+                                 }
+ }
+  
+  var u1 = new University('煙台大學', '山東');
+  var u2 = new University('北京航空航天大學', '北京');
+   
+   u1.showInfo(); //煙台大學是一所山東的大學
+   u2.showInfo(); //北京航空航天大學是一所北京的大學
+ ```
+ 這裡我們使用new關鍵字後，University所做的工作就像一個構造函數一樣，生成了兩個University對象。其實在上一節我們創建新的函數時就是以構造器方式調用內置對象Function。  
+
+ 但是要記得，構造函數和函數本身沒有任何區別，決定一個函數是作為構造函數運行還是普通函數運行的是調用方式上。所以，下面的代碼也完全合法：  
+ ```javascript
+  var u = University('清華大學', '北京');
+ ```
+  此時University被當做一個普通函數調用，那麼會產生什麼效果呢？因為University本身沒有返回值，所以u的值會是「undefined」，而此時是在全局作用域中執行University，「this」指向的是全局變量window，所以其結果是此語句為全局變量window添加了兩個變量成員「_name」和「_loca」，值分別為「清華大學」和「北京」。  
 ### Reference 參考
  - [解讀ECMAScript[2]——函數、構造器及原型] (http://www.cnblogs.com/leoo2sk/archive/2011/01/12/ecmascript-function.html)
 
