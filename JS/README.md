@@ -93,18 +93,18 @@ About basic coding sheets
  ### ECMAScript中的構造器（Constructor）
  ```javascript
  function University(name, loca){
-         this._name = name;
-             this._loca = loca;
-                 this.showInfo = function(){
-                             alert(this._name + '是一所' + this._loca + '的大學');
-                                 }
+     this._name = name;
+     this._loca = loca;
+     this.showInfo = function(){
+         alert(this._name + '是一所' + this._loca + '的大學');
+     }
  }
   
   var u1 = new University('煙台大學', '山東');
   var u2 = new University('北京航空航天大學', '北京');
    
-   u1.showInfo(); //煙台大學是一所山東的大學
-   u2.showInfo(); //北京航空航天大學是一所北京的大學
+  u1.showInfo(); //煙台大學是一所山東的大學
+  u2.showInfo(); //北京航空航天大學是一所北京的大學
  ```
  這裡我們使用new關鍵字後，University所做的工作就像一個構造函數一樣，生成了兩個University對象。其實在上一節我們創建新的函數時就是以構造器方式調用內置對象Function。  
 
@@ -113,6 +113,24 @@ About basic coding sheets
   var u = University('清華大學', '北京');
  ```
   此時University被當做一個普通函數調用，那麼會產生什麼效果呢？因為University本身沒有返回值，所以u的值會是「undefined」，而此時是在全局作用域中執行University，「this」指向的是全局變量window，所以其結果是此語句為全局變量window添加了兩個變量成員「_name」和「_loca」，值分別為「清華大學」和「北京」。  
+ ### 原型（Prototype）
+  - 函數與prototype  
+    如果說每個對象有自己的屬性這點還說得過去，那麼每個對象都保持一份方法的對象拷貝就實在不合理了，因為一般來說方法是共用的，每個對象保持一份拷貝浪費存儲資源，也無法實現繼承。所以ECMAScript中給出了原型對象（prototype）的定義。ECMA-262中對prototype的定義是：  
+    `A prototype property is automatically created for every function, to provide for the possibility that the function will be used as a constructor.`   
+    這句話只能看出prototype是每個函數都會有的一個成員，並且會在此函數被當做構造器調用時發揮作用。下面是我對原型的總結：  
+    `當一個函數對象F被創建時，會自動為其創建一個叫「prototype」的對象成員，叫做F的原型。當類似於「var o = new F(參數列表)」的調用發生時，F會按照構造器模式創建o，並為o自動創建一個屬性「__proto__」，此屬性指向F的prototype。`  
+
+    例如執行下列代碼：  
+    ```javascript
+    function F(){
+    }
+     
+     var o1 = new F();
+     var o2 = new F();
+    ```
+
+
+  - 原型鏈與ECMAScript的成員查找算法
 ### Reference 參考
  - [解讀ECMAScript[2]——函數、構造器及原型] (http://www.cnblogs.com/leoo2sk/archive/2011/01/12/ecmascript-function.html)
 
