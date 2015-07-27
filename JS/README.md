@@ -129,8 +129,9 @@ About basic coding sheets
      var o2 = new F();
     ```
 
+  - 原型鏈與ECMAScript的成員查找算法  
+  說到這裡，可能還看不出來原型的作用是什麼。實際上，原型的作用之一就是為程序員提供一種定義公共成員的途徑。上文說過，我們遇到的問題之一是University的不同對象保有不同的方法，使用原型，University可重新編寫如下：  
 
-  - 原型鏈與ECMAScript的成員查找算法
 ### Reference 參考
  - [解讀ECMAScript[2]——函數、構造器及原型] (http://www.cnblogs.com/leoo2sk/archive/2011/01/12/ecmascript-function.html)
 
