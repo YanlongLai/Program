@@ -6,7 +6,7 @@ typedef struct node{
     int data;
     node *next;
 }node;
-bool hash[100];
+bool hash_a[100];
 
 node* init(int a[], int n){
     node *head, *p;
@@ -25,16 +25,16 @@ node* init(int a[], int n){
 void removedulicate(node *head){
     if(head==NULL) return;
     node *p=head, *q=head->next;
-    hash[head->data] = true;
+    hash_a[head->data] = true;
     while(q){
-        if(hash[q->data]){
+        if(hash_a[q->data]){
             node *t = q;
             p->next = q->next;
             q = p->next;
             delete t;
         }
         else{
-            hash[q->data] = true;
+            hash_a[q->data] = true;
             p = q; q = q->next;
         }
     }
@@ -71,7 +71,7 @@ int main(){
     int a[] = {
         3, 2, 1, 3, 5, 6, 2, 6, 3, 1 
     };
-    memset(hash, false, sizeof(hash));
+    memset(hash_a, false, sizeof(hash_a));
     node *head = init(a, n);
     removedulicate1(head);
     print(head);

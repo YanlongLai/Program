@@ -16,6 +16,7 @@ int main(){
     string s1 = "apple";
     string s2 = "pleap";
     cout<<isRotation(s1, s2)<<endl;
+    cout<<isSubstring(s1, s2)<<endl;
     //cout<<string::npos<<endl;
     return 0;
 }
