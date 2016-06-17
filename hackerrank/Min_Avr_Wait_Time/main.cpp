@@ -29,8 +29,6 @@ int main() {
     vector<client> clients;
     vector<client> comingClients;
     vector<client> result;
-    vector <long int> vec1;
-    vector <long int> vec2;
     // vector <long int> result;
     // INPUT
     long int N;
@@ -70,6 +68,7 @@ int main() {
             }
             // Sort by cookingTime
             sort(comingClients.begin(), comingClients.end(), by_cookingTime());
+
             // TEST
             // for(int j = 0; j< comingClients.size() ; j++) {
             //     cout << comingClients[j].comingTime  <<  " " << comingClients[j].cookingTime << endl;
@@ -77,73 +76,58 @@ int main() {
 
             // // compute waiting time
             // wtime = comingClients[0].cookingTime * comingClients.size();
+
             // Edit time line
             time = comingClients[0].comingTime + comingClients[0].cookingTime;
+
             // Pop First Client
             // comingClients[0].complete = 1;
-            comingClients.erase(comingClients.begin());
             result.push_back(comingClients[0]);
+            comingClients.erase(comingClients.begin());
         }
         // 1~N-2
         else {
-            // if(comingClients.size()!=0) {
-                // update comingClients
-                // int noncomingClients_size = noncomingClients.size();
-                for(int j = 0; j< N ; j++) {
-                    if(clients[j].comingTime <= time && clients[j].complete == 0) {
-                        clients[j].complete = 1;
-                        comingClients.push_back(clients[j]);
-                        // noncomingClients.erase(noncomingClients.begin()+j);
-                    }
+            // update comingClients
+            // int noncomingClients_size = noncomingClients.size();
+            for(int j = 0; j< N ; j++) {
+                if(clients[j].comingTime <= time && clients[j].complete == 0) {
+                    clients[j].complete = 1;
+                    comingClients.push_back(clients[j]);
+                    // cout << clients[j].comingTime  <<  " " << clients[j].cookingTime << " " << clients[j].complete << endl;
+                    // noncomingClients.erase(noncomingClients.begin()+j);
                 }
+            }
 
-                // Sort by cookingTime
-                sort(comingClients.begin(), comingClients.end(), by_cookingTime());
+            // Sort by cookingTime
+            sort(comingClients.begin(), comingClients.end(), by_cookingTime());
 
-                // Pop the small cooking time client
-                comingClients.erase(comingClients.begin());
-                result.push_back(comingClients[0]);
+            // New time line
+            time += comingClients[0].cookingTime;
 
-                // New time line
-                time += comingClients[0].cookingTime;
+            // Pop the small cooking time client
+            result.push_back(comingClients[0]);
+            comingClients.erase(comingClients.begin());
 
-                // for(int j = 0; j< comingClients.size() ; j++) {
-                //     wtime += time - comingClients[j].comingTime;
-                //     // update wait time
-                //     comingClients[j].comingTime = time;
-                // }
-            // }
-            // else {
+            // cout <<"#"<< i<< ":"<<endl;
 
-            // }
+
         }
-        // Last: N-1
-        // else {
-        //     // set now time = pre time + cooking time
-        //     // time += vec2[i]
-        // }
     }
 
-    for(int i = 0; i< N ; i++) {
-        cout << result[i].comingTime  <<  " " << result[i].cookingTime << endl;
+    for(int i = 0; i< result.size() ; i++) {
+        cout << result[i].comingTime  <<  " " << result[i].cookingTime << " " << result[i].complete << endl;
+        if(i==0) {
+            wtime = result[i].cookingTime;
+            time = result[i].comingTime + result[i].cookingTime;
+            // cout << wtime << endl;
+        }
+        else {
+            time += result[i].cookingTime;
+            wtime += time - result[i].comingTime;
+            // cout << time - result[i].comingTime << endl;
+        }
     }
-
-    // long int temp;
-    // for(int i = 0; i< N ; i++) {
-    // for(int j = 0; j< N ; j++) {
-    //     // order from small to big on coming time
-    //     if(vec1[i]<vec1[j]) {
-    //         temp = vec1[i];
-    //         vec1[i] = vec1[j];
-    //         vec1[j] = temp;
-    //         temp = vec2[i];
-    //         vec2[i] = vec2[j];
-    //         vec2[j] = temp;
-    //     }
-    // }
-    // }
-
-
+    cout << wtime/3 << endl;
 
     return 0;
 }
