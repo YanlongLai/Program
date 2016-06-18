@@ -1,6 +1,7 @@
 #include <cmath>
 #include <cstdio>
 #include <vector>
+#include <deque>
 #include <iostream>
 #include <algorithm>
 #include <string>
@@ -26,8 +27,10 @@ struct by_cookingTime {
 
 int main() {
     // set
-    vector<client> clients;
-    vector<client> comingClients;
+    deque<client> clients;
+    deque<client> comingClients;
+    deque<client> vipClients;
+    deque<client> normalClients;
     // vector<client> result;
     // vector <long int> result;
 
@@ -37,6 +40,8 @@ int main() {
     long int time=0;
     long int wtime=0;
     bool isCliensAllIn = false;
+    bool isNonSort = false;
+    bool isDirty = false;
     cin>>N;
     while(line < N){
         client p;
@@ -94,12 +99,12 @@ int main() {
             // Pop First Client
             // comingClients[0].complete = 1;
             // result.push_back(comingClients[0]);
-            comingClients.erase(comingClients.begin());
+            comingClients.pop_front();
         }
         // 1~N-2
         else {
             // isNewClientComing: isNewClientComing
-            bool isNewClientComing = false;
+            // bool isNewClientComing = false;
             // int comingCleints = 0;
             // update comingClients
             // int noncomingClients_size = noncomingClients.size();
@@ -109,16 +114,50 @@ int main() {
                 isCliensAllIn = true;
                 break;
             }
+
+            // all VipClient cooktime less than the comingClients[0]
+            for(int j = 0; j< clients.size() ; j++) {
+                if(clients[j].comingTime <= time) {
+                    if(clients[j].cookingTime <= comingClients[0].cookingTime)
+                    {
+                        vipClients.push_back(clients[j]);
+                        clients.erase(clients.begin() + j);
+                        j--;
+                        // cout<< "!!!"<<endl;
+                    }
+                }
+                else {
+                    break;
+                }
+            }
+            if(vipClients.size() > 1) {
+                sort(vipClients.begin(), vipClients.end(), by_cookingTime());
+            }
+
+            if(vipClients.size() >= 1) {
+                time += vipClients[0].cookingTime;
+                wtime += time - vipClients[0].comingTime;
+            }
+
+            if(vipClients.size() > 1) {
+                comingClients.insert(comingClients.begin(), vipClients.begin()+1, vipClients.end());
+            }
+
+            vipClients.clear();
+
             for(int j = 0; j< clients.size() ; j++) {
                 if(clients[j].comingTime <= time) {
                     // cout << clients[j].comingTime  <<  " " << clients[j].cookingTime <<  endl;
                     // if ( clients[j].complete == 0 ) {
                         // clients[j].complete = 1;
-                        comingClients.push_back(clients[j]);
-                        clients.erase(clients.begin() + j);
-                        j--;
 
-                        isNewClientComing = true;
+                    // comingClients.push_back(clients[j]);
+                    normalClients.push_back(clients[j]);
+                    clients.erase(clients.begin() + j);
+                    j--;
+
+                    // isDirty = true;
+
                         // comingCleints++;
                     // }
                     // noncomingClients.erase(noncomingClients.begin()+j);
@@ -127,6 +166,15 @@ int main() {
                     break;
                 }
             }
+
+            if(normalClients.size()>0) {
+                int normalClientsNum = normalClients.size();
+                sort(normalClients.begin(), normalClients.end(), by_cookingTime());
+                comingClients.insert(comingClients.begin(), normalClients.begin(), normalClients.end());
+                inplace_merge(comingClients.begin(), comingClients.begin() + normalClientsNum, comingClients.end(), by_cookingTime());
+            }
+            normalClients.clear();
+
             // cout << i << ": " << comingCleints <<endl;
             // solve the free no clients
             if(comingClients.size()==0) {
@@ -134,15 +182,15 @@ int main() {
                     // if(clients[j].complete == 0) {
                         // clients[j].complete = 1;
                         comingClients.push_back(clients[0]);
-                        clients.erase(clients.begin());
+                        clients.pop_front();
                         time = comingClients[0].comingTime + comingClients[0].cookingTime;
                     // }
                 // }
             }
             else {
                 // Sort by cookingTime
-                if(isNewClientComing)
-                sort(comingClients.begin(), comingClients.end(), by_cookingTime());
+                // if(isDirty)
+                // sort(comingClients.begin(), comingClients.end(), by_cookingTime());
                 // cout<< i<<": "<< isNewClientComing<< endl;
                 // New time line
                 time += comingClients[0].cookingTime;
@@ -153,7 +201,7 @@ int main() {
 
             // Pop the small cooking time client
             // result.push_back(comingClients[0]);
-            comingClients.erase(comingClients.begin());
+            comingClients.pop_front();
 
             // cout <<"#"<< i<< ":"<<endl;
 
